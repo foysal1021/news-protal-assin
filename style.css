@@ -1,0 +1,15 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+.repoter-img{
+    width: 50px;
+    border-radius: 100%;
+}
+.repoter-details {
+background: teal;
+width: 300px;
+color: white;
+font-size: 18px;
+align-items: center;
+}

@@ -51,9 +51,20 @@ const displayNews = (category)=>{
 
     <div class="col-md-8">
       <div class="card-body">
-        <h5 class="card-title">Card title</h5>
-        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+        <h5 class="card-title"> ${news.title} </h5>
+        <p class="card-text"> ${news.details.slice(0,400)} </p>
+
+        <div class="d-flex repoter-details"> 
+        <img class="repoter-img" src="${news.author.img}" />
+        <div>
+        <h5> ${news.author.name? news.author.name: "no name found"} </h5>
+        <p>  hello </p>
+        </div>
+
+
+        
+        </div>
+        
       </div>
     </div>
 

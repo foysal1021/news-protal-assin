@@ -7,9 +7,17 @@
     border-radius: 100%;
 }
 .repoter-details {
-background: teal;
-width: 300px;
-color: white;
+width: 400px;
 font-size: 18px;
 align-items: center;
+}
+.reporte-info h5,p {
+    margin: 0;
+}
+.reporte-info {
+    margin-left: 15px;
+}
+.views {
+    margin-left: 65px;
+    font-size: 20px;
 }

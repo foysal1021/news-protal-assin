@@ -6,6 +6,7 @@
     <title>FA News</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
     <link rel="stylesheet" href="style.css">
+    <script src="https://kit.fontawesome.com/e0a0ad1d29.js" crossorigin="anonymous"></script>
 </head>
   <body class="bg-dark">
 
@@ -16,7 +17,7 @@
         <header class="">
             <nav class="navbar ">
                 <div class="container-fluid">
-                  <a class="navbar-brand fw-bold fs-1 text-white"> F A <span class="">NEWS</span></a>
+                  <a class="navbar-brand fw-bold fs-1 text-white"><i class="fa-sharp fa-solid fa-eye"></i> F A <span class="">NEWS</span></a>
                   <form class="d-flex" role="search">
                     <button class="btn bg-success text-white" type="submit">News</button>
                     <button class="btn bg-success text-white ms-3" type="submit">Blog</button>
@@ -30,9 +31,26 @@
         <!-- main start -->
         <main>
             <!-- manu bar end-->
-            <section id="all-manu-btn" class="mt-3 d-flex justify-content-evenly">
+            <section id="all-manu-btn" class="mt-3 d-flex justify-content-between">
             </section>
             <!-- manu bar end-->
+
+            <!-- total news in this category start -->
+            <section class=" mt-4">
+                <div>
+                    <h4  class=" text-white"> <span id="news-length"></span> items found for category Entertainmen</h4>
+                </div>
+            </section>
+            <!-- total news in this category end -->
+
+
+        <!-- spinner start -->
+        <div id="spinner" class="d-flex justify-content-center mt-5 d-none">
+            <div class="spinner-border text-success" role="status">
+              <span class="visually-hidden">Loading...</span>
+            </div>
+          </div>
+        <!-- spinner end -->
 
             <!-- news container is start here -->
         <section id="news-container" class=" mt-5">

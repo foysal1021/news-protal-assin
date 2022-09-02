@@ -25,6 +25,7 @@ allCategory();
 
 // all Category BTN start here
 const allCategoryBTN = (rcv_category_id)=>{
+    document.getElementById('spinner').classList.remove('d-none')
     const url = ` https://openapi.programming-hero.com/api/news/category/${rcv_category_id}`;
     fetch (url)
     .then(res => res.json())
@@ -34,10 +35,10 @@ const allCategoryBTN = (rcv_category_id)=>{
 
 //display news start here
 const displayNews = (category)=>{
+    document.getElementById('news-length').innerText = category.length; // this search total regult length
     const NewsContainer = document.getElementById('news-container');
-    console.log(category);
+    NewsContainer.innerHTML = "";
     category.forEach( news =>{
-    
     const NewsDiv = document.createElement("div");
     NewsDiv.classList.add('card');
     NewsDiv.classList.add('mb-3');
@@ -51,15 +52,17 @@ const displayNews = (category)=>{
 
     <div class="col-md-8">
       <div class="card-body">
-        <h5 class="card-title"> ${news.title} </h5>
+        <h4 class="card-title"> ${news.title} </h4>
         <p class="card-text"> ${news.details.slice(0,400)} </p>
 
-        <div class="d-flex repoter-details"> 
+        <div class="d-flex repoter-details mt-3"> 
         <img class="repoter-img" src="${news.author.img}" />
-        <div>
+        <div class="reporte-info">
         <h5> ${news.author.name? news.author.name: "no name found"} </h5>
-        <p>  hello </p>
+        <p>  ${news.author.published_date?news.author.published_date:"no date finde"} </p>
         </div>
+
+        <div class="views"><i class="fa-sharp fa-solid fa-eye"></i> ${news.total_view?news.total_view:"no views"} </div>
 
 
         
@@ -70,6 +73,8 @@ const displayNews = (category)=>{
 
   </div>
     `;
+
+    document.getElementById('spinner').classList.add('d-none')
     NewsContainer.appendChild(NewsDiv);
     });
     

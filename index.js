@@ -55,31 +55,42 @@ const displayNews = (category)=>{
     const NewsContainer = document.getElementById('news-container');
     NewsContainer.innerHTML = "";
     category.forEach( news =>{
+      console.log(news)
     const NewsDiv = document.createElement("div");
     NewsDiv.classList.add('card');
     NewsDiv.classList.add('mb-3');
     NewsDiv.innerHTML =
     `
     <div onclick="GetNewsId('${news._id}')" class="row g-0" data-bs-toggle="modal" data-bs-target="#exampleModal">
-    <div class="col-md-3">
-      <img src="${news.thumbnail_url}" class="img-fluid rounded-start h-100" alt="...">
+    <div class="col-md-3 text-lg-start text-center">
+      <img src="${news.thumbnail_url}" class="img-fluid rounded-start h-100 " alt="...">
     </div>
+
     <div class="col-md-9">
       <div class="card-body">
-        <h4 class="card-title"> ${news.title} </h4>
-        <p class="card-text"> ${news.details.slice(0,400)}...... </p>
-        <div class="d-flex repoter-details mt-3"> 
-        <img class="repoter-img" src="${news.author.img}" />
-        <div class="reporte-info">
-        <h5> ${news.author.name? news.author.name: "no name found"} </h5>
-        <p>  ${news.author.published_date?news.author.published_date:"no date finde"} </p>
+        <h4 class="card-title text-center text-lg-start"> ${news.title} </h4>
+        <p class="card-text text-center my-3 text-lg-start my-lg-0"> ${news.details.slice(0,400)}...... </p>
+
+        <div class=" d-block d-lg-flex align-items-center mt-5">
+
+             <div class="d-flex col-12 col-lg-4 justify-content-center justify-content-lg-start">
+              <img class="repoter-img" src="${news.author.img}"/>
+              <div>
+              <h5 class="m-0 ms-3">${news.author.name?news.author.name:'no name found'}</h5>
+              <p class="ms-3"> ${news.author.published_date?news.author.published_date:'no date found'} </p>
+              </div>
+
+              </div>
+
+             <div class="">
+             <p class="mt-3 text-center mt-lg-0"><i class="fa-sharp fa-solid fa-eye"></i> ${news.total_view?news.total_view:'no views'} </P>
+             </div>
+
         </div>
-        <div class="views"><i class="fa-sharp fa-solid fa-eye"></i> ${news.total_view?news.total_view:"no views"} </div>
-        
-        </div>
-        
+
       </div>
     </div>
+
   </div>
     `;
 
@@ -110,8 +121,8 @@ const getModalData = (rcvNewsID)=>{
   <p> _id: ${rcvNewsID[0]._id} </P>
   <h5> ${rcvNewsID[0].title} </h5>
   <p> ${rcvNewsID[0].details} </p>
-  <h5> Repoter : ${rcvNewsID[0].author.name} </h5>
-  <p> published date : ${rcvNewsID[0].author.published_date} </p>
+  <h5> Repoter : ${rcvNewsID[0].author.name?rcvNewsID[0].author.name: 'no name found'} </h5>
+  <p> published date : ${rcvNewsID[0].author.published_date?rcvNewsID[0].author.published_date:'no date found'} </p>
   <h5> Total Views : ${rcvNewsID[0].total_view?rcvNewsID[0].total_view:"no views"} </h5>
   `
 };

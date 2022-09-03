@@ -96,4 +96,13 @@ const getModalData = (rcvNewsID)=>{
   <h5> ${rcvNewsID[0].title} </h5>
   <p> Total Views : ${rcvNewsID[0].total_view?rcvNewsID[0].total_view:"no views"} </p>
   `
+};
+// modal is end here
+
+// document.getElementById('blog').addEventListener('click',function(){
+//   alert('')
+// })
+
+const newBlog = ()=>{
+  window.open('http://127.0.0.1:5500/blog.html');
 }

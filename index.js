@@ -13,6 +13,7 @@ const allCategory = ()=>{
 
 //Category info is start here
 const CategoryInfo = (rcvInfo)=>{
+
     const ManuBtn = document.getElementById('all-manu-btn');
     //loop is start here
     rcvInfo.forEach(info =>{
@@ -22,6 +23,8 @@ const CategoryInfo = (rcvInfo)=>{
     ManuBtn.appendChild(ManuBtnDiv);
     });
     //loop is end here
+
+
 }
 //Category info is end here
 allCategory();

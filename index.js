@@ -18,7 +18,7 @@ const CategoryInfo = (rcvInfo)=>{
     rcvInfo.forEach(info =>{
     const ManuBtnDiv = document.createElement('div');
     ManuBtnDiv.classList.add('text-center');
-    ManuBtnDiv.innerHTML = ` <button onclick="allCategoryBTN('${info.category_id}')" class="btn btn-success w-100"> ${info.category_name} </button>`;
+    ManuBtnDiv.innerHTML = ` <button onclick="allCategoryBTN('${info.category_id}')" class="btn btn-success w-100 mt-2"> ${info.category_name} </button>`;
     ManuBtn.appendChild(ManuBtnDiv);
     });
     //loop is end here
@@ -104,6 +104,7 @@ const getModalData = (rcvNewsID)=>{
   modalBody.innerHTML=
   `
   <img class="w-100" src='${rcvNewsID[0].image_url}'/>
+  <p> _id: ${rcvNewsID[0]._id} </P>
   <h5> ${rcvNewsID[0].title} </h5>
   <p> ${rcvNewsID[0].details} </p>
   <h5> Repoter : ${rcvNewsID[0].author.name} </h5>
@@ -113,10 +114,9 @@ const getModalData = (rcvNewsID)=>{
 };
 // modal is end here
 
-// document.getElementById('blog').addEventListener('click',function(){
-//   alert('')
-// })
 
+
+// linded with blog.html form index.html
 const newBlog = ()=>{
   document.getElementById('spinner').classList.remove('d-none');
   window.open('http://127.0.0.1:5500/blog.html');

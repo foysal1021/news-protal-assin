@@ -55,32 +55,25 @@ const displayNews = (category)=>{
     NewsDiv.innerHTML =
     `
     <div onclick="GetNewsId('${news._id}')" class="row g-0" data-bs-toggle="modal" data-bs-target="#exampleModal">
-
     <div class="col-md-4">
-      <img src="${news.image_url}" class="img-fluid rounded-start" alt="...">
+      <img src="${news.image_url}" class="img-fluid rounded-start h-100" alt="...">
     </div>
-
     <div class="col-md-8">
       <div class="card-body">
         <h4 class="card-title"> ${news.title} </h4>
         <p class="card-text"> ${news.details.slice(0,400)}...... </p>
-
         <div class="d-flex repoter-details mt-3"> 
         <img class="repoter-img" src="${news.author.img}" />
         <div class="reporte-info">
         <h5> ${news.author.name? news.author.name: "no name found"} </h5>
         <p>  ${news.author.published_date?news.author.published_date:"no date finde"} </p>
         </div>
-
         <div class="views"><i class="fa-sharp fa-solid fa-eye"></i> ${news.total_view?news.total_view:"no views"} </div>
-
-
         
         </div>
         
       </div>
     </div>
-
   </div>
     `;
 
@@ -112,8 +105,7 @@ const getModalData = (rcvNewsID)=>{
   <p> ${rcvNewsID[0].details} </p>
   <h5> Repoter : ${rcvNewsID[0].author.name} </h5>
   <p> published date : ${rcvNewsID[0].author.published_date} </p>
-  <h5> Total Views : ${rcvNewsID[0].total_view?rcvNewsID[0].total_view:"no views"}M </h5>
-
+  <h5> Total Views : ${rcvNewsID[0].total_view?rcvNewsID[0].total_view:"no views"} </h5>
   `
 };
 // modal is end here

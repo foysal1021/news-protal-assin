@@ -1,8 +1,12 @@
 // all Category is start here
 const allCategory = ()=>{
+  try{
     fetch('https://openapi.programming-hero.com/api/news/categories')
     .then(res => res.json())
     .then(catagory => CategoryInfo(catagory.data.news_category))
+  }catch(e){
+    console.log(e);
+  }
 }
 // all Category is end here
 
@@ -13,7 +17,8 @@ const CategoryInfo = (rcvInfo)=>{
     //loop is start here
     rcvInfo.forEach(info =>{
     const ManuBtnDiv = document.createElement('div');
-    ManuBtnDiv.innerHTML = ` <button onclick="allCategoryBTN('${info.category_id}')" class="btn btn-success"> ${info.category_name} </button>`;
+    ManuBtnDiv.classList.add('text-center');
+    ManuBtnDiv.innerHTML = ` <button onclick="allCategoryBTN('${info.category_id}')" class="btn btn-success w-100"> ${info.category_name} </button>`;
     ManuBtn.appendChild(ManuBtnDiv);
     });
     //loop is end here
@@ -27,9 +32,14 @@ allCategory();
 const allCategoryBTN = (rcv_category_id)=>{
     document.getElementById('spinner').classList.remove('d-none')
     const url = ` https://openapi.programming-hero.com/api/news/category/${rcv_category_id}`;
-    fetch (url)
-    .then(res => res.json())
-    .then(category => displayNews(category.data));
+    try{
+      fetch (url)
+      .then(res => res.json())
+      .then(category => displayNews(category.data));
+    }
+    catch(e){
+      console.log(e);
+    }
 }
 // all Category BTN end here
 
@@ -53,7 +63,7 @@ const displayNews = (category)=>{
     <div class="col-md-8">
       <div class="card-body">
         <h4 class="card-title"> ${news.title} </h4>
-        <p class="card-text"> ${news.details.slice(0,400)} </p>
+        <p class="card-text"> ${news.details.slice(0,400)}...... </p>
 
         <div class="d-flex repoter-details mt-3"> 
         <img class="repoter-img" src="${news.author.img}" />
@@ -82,9 +92,14 @@ const displayNews = (category)=>{
 // modal 
 const GetNewsId = (rcvNewsId)=>{
   const url = `https://openapi.programming-hero.com/api/news/${rcvNewsId}`;
-  fetch(url)
-  .then(res => res.json())
-  .then(newsid =>getModalData(newsid.data))
+  try{
+    fetch(url)
+    .then(res => res.json())
+    .then(newsid =>getModalData(newsid.data))
+  }
+  catch(e){
+    console.log(e);
+  }
 }
 
 const getModalData = (rcvNewsID)=>{
@@ -94,7 +109,11 @@ const getModalData = (rcvNewsID)=>{
   `
   <img class="w-100" src='${rcvNewsID[0].image_url}'/>
   <h5> ${rcvNewsID[0].title} </h5>
-  <p> Total Views : ${rcvNewsID[0].total_view?rcvNewsID[0].total_view:"no views"} </p>
+  <p> ${rcvNewsID[0].details} </p>
+  <h5> Repoter : ${rcvNewsID[0].author.name} </h5>
+  <p> published date : ${rcvNewsID[0].author.published_date} </p>
+  <h5> Total Views : ${rcvNewsID[0].total_view?rcvNewsID[0].total_view:"no views"}M </h5>
+
   `
 };
 // modal is end here
@@ -104,5 +123,7 @@ const getModalData = (rcvNewsID)=>{
 // })
 
 const newBlog = ()=>{
+  document.getElementById('spinner').classList.remove('d-none');
   window.open('http://127.0.0.1:5500/blog.html');
+  document.getElementById('spinner').classList.add('d-none');
 }

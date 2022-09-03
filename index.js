@@ -45,6 +45,9 @@ const allCategoryBTN = (rcv_category_id)=>{
 
 //display news start here
 const displayNews = (category)=>{
+  if(category.length<1){
+    document.getElementById('spinner').classList.add('d-none');
+  }
     document.getElementById('news-length').innerText = category.length; // this search total regult length
     const NewsContainer = document.getElementById('news-container');
     NewsContainer.innerHTML = "";

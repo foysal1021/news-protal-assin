@@ -101,7 +101,6 @@ const GetNewsId = (rcvNewsId) => {
   }
 }
 const getModalData = (rcvNewsID) => {
-  console.log(rcvNewsID[0]);
   const modalBody = document.getElementById('modalBody');
   modalBody.innerHTML =
     `

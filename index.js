@@ -58,10 +58,10 @@ const displayNews = (category)=>{
     NewsDiv.innerHTML =
     `
     <div onclick="GetNewsId('${news._id}')" class="row g-0" data-bs-toggle="modal" data-bs-target="#exampleModal">
-    <div class="col-md-4">
-      <img src="${news.image_url}" class="img-fluid rounded-start h-100" alt="...">
+    <div class="col-md-3">
+      <img src="${news.thumbnail_url}" class="img-fluid rounded-start h-100" alt="...">
     </div>
-    <div class="col-md-8">
+    <div class="col-md-9">
       <div class="card-body">
         <h4 class="card-title"> ${news.title} </h4>
         <p class="card-text"> ${news.details.slice(0,400)}...... </p>

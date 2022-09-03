@@ -42,7 +42,6 @@ const displayNews = (category)=>{
     const NewsDiv = document.createElement("div");
     NewsDiv.classList.add('card');
     NewsDiv.classList.add('mb-3');
-    console.log(news)
     NewsDiv.innerHTML =
     `
     <div onclick="GetNewsId('${news._id}')" class="row g-0" data-bs-toggle="modal" data-bs-target="#exampleModal">
@@ -85,9 +84,16 @@ const GetNewsId = (rcvNewsId)=>{
   const url = `https://openapi.programming-hero.com/api/news/${rcvNewsId}`;
   fetch(url)
   .then(res => res.json())
-  .then(newsid =>console.log(newsid.data))
+  .then(newsid =>getModalData(newsid.data))
 }
 
-const getModalData = ()=>{
-
+const getModalData = (rcvNewsID)=>{
+  console.log(rcvNewsID[0]);
+  const modalBody = document.getElementById('modalBody');
+  modalBody.innerHTML=
+  `
+  <img class="w-100" src='${rcvNewsID[0].image_url}'/>
+  <h5> ${rcvNewsID[0].title} </h5>
+  <p> Total Views : ${rcvNewsID[0].total_view?rcvNewsID[0].total_view:"no views"} </p>
+  `
 }

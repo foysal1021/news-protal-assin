@@ -126,6 +126,6 @@ const getModalData = (rcvNewsID) => {
 // linked with blog.html form index.html
 const newBlog = () => {
   document.getElementById('spinner').classList.remove('d-none');
-  window.open('http://127.0.0.1:5500/blog.html');
+  window.open('https://radiant-cucurucho-7a5447.netlify.app/');
   document.getElementById('spinner').classList.add('d-none');
 }

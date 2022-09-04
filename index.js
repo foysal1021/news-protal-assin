@@ -42,18 +42,20 @@ const allCategoryBTN = (rcv_category_id) => {
 // all Category BTN end here
 
 
+
 //display news start here
 const displayNews = (category) => {
-  category.sort((a, b) => b.total_view - a.total_view); // top views serial
 
+  category.sort((a, b) => b.total_view - a.total_view); // top views serial
+  document.getElementById('news-length').innerText = category.length; // new search length show 
   if (category.length < 1) {
     document.getElementById('spinner').classList.add('d-none'); //stop spinner for  Culture btn
+    document.getElementById('news-length').innerText = "no data"; // no data found message
   }
-  document.getElementById('news-length').innerText = category.length; // new search length show 
+  
   const NewsContainer = document.getElementById('news-container');
   NewsContainer.innerHTML = "";
   category.forEach(news => {
-    console.log(news)
     const NewsDiv = document.createElement("div");
     NewsDiv.classList.add('card');
     NewsDiv.classList.add('mb-3');
@@ -120,8 +122,6 @@ const getModalData = (rcvNewsID) => {
   `
 };
 // modal is end here
-
-
 
 // linked with blog.html form index.html
 const newBlog = () => {
